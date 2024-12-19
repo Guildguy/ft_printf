@@ -19,5 +19,5 @@ int		print_int(int n);
 int		print_uns_int(unsigned int n);
 int		hex_len(unsigned int n);
 void	hex_write(unsigned int n, char format);
-void	print_hex(unsigned int n, char format);
+int		print_hex(unsigned int n, char format);
 #endif
