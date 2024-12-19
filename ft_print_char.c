@@ -1,7 +1,5 @@
 #include "ft_printf.h"
 
-//for this file we have to treat: csp
-
 int	print_chr(char c)
 {
 	int	count;
@@ -43,7 +41,7 @@ int	ptr_len(uintptr_t ptr)
 
 void	ptr_write(uintptr_t ptr)
 {
-	char	c;
+	char	hex_tmp;
 	char	*hex;
 
 	hex = "0123456789abcdef";
@@ -54,8 +52,8 @@ void	ptr_write(uintptr_t ptr)
 	}
 	else
 	{
-		c = hex[ptr];
-		write(1, &c, 1);
+		hex_tmp = hex[ptr];
+		write(1, &hex_tmp, 1);
 	}
 }
 
