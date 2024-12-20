@@ -1,13 +1,24 @@
+NAME = libftprintf.a
+
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 
-NAME = libftprintf.a
-SRC = ft_printf.c ft_printf_utils.c ft_print_char.c _ft_print_num.c
-OBJ = $(SRC: %.c=%.0)
+SRC = ft_printf.c ft_printf_utils.c ft_print_char.c ft_print_num.c
+OBJ = $(SRC:%.c=%.o)
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -rcs $@ $?
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
 
-.PHONY all clean fclean re
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

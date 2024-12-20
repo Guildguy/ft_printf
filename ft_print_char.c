@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleite-j <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 19:04:57 by fleite-j          #+#    #+#             */
+/*   Updated: 2024/12/19 19:05:00 by fleite-j         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_chr(char c)
 {
 	int	count;
-	
+
 	count = 0;
 	count += write(1, &c, 1);
 	return (count);
@@ -17,10 +29,11 @@ int	print_str(char *str)
 	if (!str)
 	{
 		count += write(1, "(NULL)", 6);
+		return (count);
 	}
 	while (*str)
 	{
-		count += write(1, &str, 1);
+		count += write(1, str, 1);
 		str++;
 	}
 	return (count);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleite-j <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 19:05:41 by fleite-j          #+#    #+#             */
+/*   Updated: 2024/12/19 19:05:43 by fleite-j         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_uns_int_len(unsigned int n)
@@ -9,7 +21,7 @@ int	ft_uns_int_len(unsigned int n)
 		return (1);
 	while (n)
 	{
-		n /= 10;
+		n = n / 10;
 		len++;
 	}
 	return (len);
@@ -30,7 +42,7 @@ char	*ft_uns_itoa(unsigned int n)
 	while (n > 0)
 	{
 		str[(--len)] = (n % 10) + '0';
-		n /= 10;
+		n = n / 10;
 	}
 	return (str);
 }
@@ -46,8 +58,8 @@ int	ft_int_len(int n)
 		len++;
 	while (n)
 	{
-		n /= 10;
 		len++;
+		n = n / 10;
 	}
 	return (len);
 }
@@ -73,8 +85,8 @@ char	*ft_itoa(int n)
 		str[0] = '0';
 	while (num > 0)
 	{
-		str[(--len)] = (n / 10) + '0';
-		n /= 10;
+		str[(--len)] = (num % 10) + '0';
+		num /= 10;
 	}
 	return (str);
 }

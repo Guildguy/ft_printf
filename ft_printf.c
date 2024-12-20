@@ -1,6 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleite-j <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 19:05:52 by fleite-j          #+#    #+#             */
+/*   Updated: 2024/12/19 19:05:54 by fleite-j         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//we need to treat the f_s now for %xX%
+#include "ft_printf.h"
 
 int	format_specifier(va_list arg, const char format)
 {
@@ -8,7 +18,7 @@ int	format_specifier(va_list arg, const char format)
 
 	count = 0;
 	if (format == 'c')
-		count += print_chr(va_arg(arg, char));
+		count += print_chr(va_arg(arg, int));
 	else if (format == 's')
 		count += print_str(va_arg(arg, char *));
 	else if (format == 'p')
@@ -24,5 +34,32 @@ int	format_specifier(va_list arg, const char format)
 		write(1, "%", 1);
 		count += 1;
 	}
+	return (count);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	int		count;
+	int		i;
+	va_list	arg;
+
+	if (!str)
+		return (-1);
+	va_start(arg, str);
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if ((str[i] == '%' && (ft_is_lower(str[i + 1]))) \
+			|| str[i + 1] == '%' || str[i + 1] == 'X')
+		{
+			count += format_specifier(arg, str[i + 1]);
+			i++;
+		}
+		else
+			count += write(1, &str[i], 1);
+		i++;
+	}
+	va_end(arg);
 	return (count);
 }

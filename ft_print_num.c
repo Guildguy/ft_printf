@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleite-j <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 19:05:17 by fleite-j          #+#    #+#             */
+/*   Updated: 2024/12/19 19:05:20 by fleite-j         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_int(int n)
@@ -34,7 +46,7 @@ int	hex_len(unsigned int n)
 {
 	int	len;
 
-	len =0;
+	len = 0;
 	if (n == 0)
 		return (1);
 	while (n)
@@ -47,14 +59,13 @@ int	hex_len(unsigned int n)
 
 void	hex_write(unsigned int n, char format)
 {
-	char	c;
+	char	hex_val;
 	char	*hex;
 	char	*upper_hex;
 
-	c = 0;
+	hex_val = 0;
 	hex = "0123456789abcdef";
 	upper_hex = "0123456789ABCDEF";
-
 	if (n >= 16)
 	{
 		hex_write(n / 16, format);
@@ -64,13 +75,13 @@ void	hex_write(unsigned int n, char format)
 	{
 		if (format == 'x')
 		{
-			c = hex[n];
-			write(1, &c, 1);
+			hex_val = hex[n];
+			write(1, &hex_val, 1);
 		}
 		else if (format == 'X')
 		{
-			c = upper_hex[n];
-			write(1, &c, 1);
+			hex_val = upper_hex[n];
+			write(1, &hex_val, 1);
 		}	
 	}
 }
