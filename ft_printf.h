@@ -24,7 +24,6 @@ int		ft_uns_int_len(unsigned int n);
 char	*ft_uns_itoa(unsigned int n);
 int		ft_int_len(int n);
 char	*ft_itoa(int n);
-int		ft_is_lower(int c);
 int		print_chr(char c);
 int		print_str(char *str);
 int		ptr_len(uintptr_t ptr);

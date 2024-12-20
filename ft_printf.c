@@ -29,11 +29,10 @@ int	format_specifier(va_list arg, const char format)
 		count += print_uns_int(va_arg(arg, unsigned int));
 	else if (format == 'x' || format == 'X')
 		count += print_hex(va_arg(arg, unsigned int), format);
+	else if (format == '%')
+		count += write(1, "%", 1);
 	else
-	{
-		write(1, "%", 1);
-		count += 1;
-	}
+		count += write(1, &format, 1);
 	return (count);
 }
 
@@ -50,8 +49,7 @@ int	ft_printf(const char *str, ...)
 	count = 0;
 	while (str[i])
 	{
-		if ((str[i] == '%' && (ft_is_lower(str[i + 1]))) \
-			|| str[i + 1] == '%' || str[i + 1] == 'X')
+		if (str[i] == '%' && str[i + 1])
 		{
 			count += format_specifier(arg, str[i + 1]);
 			i++;

@@ -90,10 +90,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-int	ft_is_lower(int c)
-{
-	if (c >= 97 && c <= 122)
-		return (1);
-	return (0);
-}

@@ -82,7 +82,7 @@ void	hex_write(unsigned int n, char format)
 		{
 			hex_val = upper_hex[n];
 			write(1, &hex_val, 1);
-		}	
+		}
 	}
 }
 
