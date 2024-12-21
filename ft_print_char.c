@@ -28,7 +28,7 @@ int	print_str(char *str)
 	count = 0;
 	if (!str)
 	{
-		count += write(1, "(NULL)", 6);
+		count += write(1, "(null)", 6);
 		return (count);
 	}
 	while (*str)
